@@ -12,18 +12,12 @@ class FSMAdmin(StatesGroup):
     number = State()
 
 
-async def load_id(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['id'] = int(message.text)
-    await FSMAdmin.next()
-    await message.answer("Какое имя у ментора? ")
-
 
 async def load_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['name'] = message.text
     await FSMAdmin.next()
-    await message.answer("Какие направление у ментора?")
+    await message.answer("Имя")
 
 
 async def load_number(message: types.Message, state: FSMContext):
