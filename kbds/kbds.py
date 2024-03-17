@@ -1,6 +1,6 @@
-from aiogram.types import KeyboardButtonPollType, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from aiogram.types import (ReplyKeyboardMarkup, KeyboardButton,
+                           InlineKeyboardMarkup, InlineKeyboardButton)
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
-
 
 start_kb = ReplyKeyboardMarkup(
     keyboard=[
@@ -14,10 +14,17 @@ start_kb = ReplyKeyboardMarkup(
         }
     ],
     resize_keyboard=True,
-    input_field_placeholder='Что Вас интересует?'
 )
 
-del_kbd = ReplyKeyboardRemove()
+to_main = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='На главную',
+                                                                      callback_data='to_main')]])
 
+info = InlineKeyboardMarkup(
+    keyword=[
+        [
+            InlineKeyboardButton(text='Услуги'),
+            InlineKeyboardButton(text='Каталог')
+        ],
 
-
+    ]
+)
